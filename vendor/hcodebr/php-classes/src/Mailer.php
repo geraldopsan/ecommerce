@@ -10,6 +10,7 @@ class Mailer {
 	const PASSWORD = "<?password?>";
 	const NAME_FROM = "Hcode Store";
 	private $mail;
+	
 	public function __construct($toAddress, $toName, $subject, $tplName, $data = array())
 	{
 		$config = array(

@@ -146,10 +146,9 @@ $app->post('/admin/users/:iduser', function($iduser){
 	exit;
 });
 
-$app->get('/admin/forgot', function(){
+$app->get("/admin/forgot", function() {
 
-	$page = new pageAdmin([
-
+	$page = new PageAdmin([
 		"header"=>false,
 		"footer"=>false
 	]);
@@ -157,8 +156,7 @@ $app->get('/admin/forgot', function(){
 	$page->setTpl("forgot");
 });
 
-$app->post('/admin/forgot', function(){
-
+$app->post("/admin/forgot", function(){
 	 
 	$user = User::getForgot($_POST["email"]);
 
@@ -169,7 +167,7 @@ $app->post('/admin/forgot', function(){
 
 $app->get("/admin/forgot/sent", function(){
 
-	$page = PageAdmin([
+	$page = new PageAdmin([
 
 		"header"=>false,
 		"footer"=>false
@@ -178,25 +176,6 @@ $app->get("/admin/forgot/sent", function(){
 	$page->setTpl("forgot-sent");
 });
 
-$app->post("/admin/forgot", function(){
-
-	$user = User::getForgot($_POST["email"]);
-
-	header(("Location: /admin/forgot/sent"));
-
-	exit;
-});
-
-$app->get("/admin/forgot/sent", function(){
-
-	$page = PageAdmin([
-
-		"header"=>false,
-		"footer"=>false
-	]);
-
-	$page->setTpl("forgot-sent");
-});
 $app->run();
 
  ?>
