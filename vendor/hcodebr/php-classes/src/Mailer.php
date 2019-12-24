@@ -6,8 +6,8 @@ use Rain\Tpl;
 
 class Mailer {
 	
-	const USERNAME = "cursophp7hcode@gmail.com";
-	const PASSWORD = "<?password?>";
+	const USERNAME = "DIGITE O EMAIL";
+	const PASSWORD = "DIGITE A SENHA DO EMAIL";
 	const NAME_FROM = "Hcode Store";
 	private $mail;
 	
@@ -31,6 +31,14 @@ class Mailer {
 		// 0 = off (for production use)
 		// 1 = client messages
 		// 2 = client and server messages
+		$this->mail->SMTPOptions = array(
+			'ssl'=>array(
+				'verify_peer'=> false,
+				'verify_peer_name'=> false,
+				'allow_self_signed' => true
+			)
+		);
+
 		$this->mail->SMTPDebug = 0;
 		//Ask for HTML-friendly debug output
 		$this->mail->Debugoutput = 'html';
