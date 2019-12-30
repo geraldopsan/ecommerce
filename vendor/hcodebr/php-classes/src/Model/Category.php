@@ -33,7 +33,7 @@ class Category extends Model {
 
 		$sql = new Sql();
 
-		$results = $sql->query("CALL sp_categories_delete(:idcategory)", [
+		$results = $sql->query("DELETE FROM tb_categories WHERE idcategory = :idcategory", [
 
 			":idcategory"=>$this->getidcategory()
 		]);

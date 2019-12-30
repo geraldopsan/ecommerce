@@ -41,21 +41,6 @@
 		exit;
 	});
 
-	$app->get("/admin/products/:idproduct/delete", function($idproduct){
-
-		User::verifyLogin();
-
-		$products = new Product();
-
-		$products->get((int)$idproduct);
-
-		$products->delete();
-
-		header("Location: /admin/products");
-
-		exit;
-	});
-
 	$app->get("/admin/products/:idproduct", function($idproduct){
 
 		User::verifyLogin();
@@ -83,7 +68,22 @@
 
 		$products->save();
 
-		$products->addPhoto($_FILES["file"]);
+		$products->setPhoto($_FILES["file"]);
+
+		header("Location: /admin/products");
+
+		exit;
+	});
+
+	$app->get("/admin/products/:idproduct/delete", function($idproduct){
+
+		User::verifyLogin();
+
+		$products = new Product();
+
+		$products->get((int)$idproduct);
+
+		$products->delete();
 
 		header("Location: /admin/products");
 
