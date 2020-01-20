@@ -123,7 +123,7 @@
 
 			$sql = new Sql();
 
-			$rows = $sql->select("SELECT * FROM tb_products WHERE desurl = :desurl", [
+			$rows = $sql->select("SELECT * FROM tb_products WHERE desurl = :desurl LIMIT 1", [
 				':desurl'=>$desurl
 			]);
 
